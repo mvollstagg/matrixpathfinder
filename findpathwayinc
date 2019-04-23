@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include <stdlib.h>
+int yol[10][10]={
+	{1,1,1,0,0,0,0,0,0,0,0},
+	{0,0,1,0,0,0,0,0,0,0,0},
+	{0,0,1,0,0,0,0,0,0,0,0},
+	{1,1,1,0,1,1,1,1,0,0,0},
+	{1,0,0,0,1,0,0,1,0,0,0},
+	{1,1,1,1,1,0,0,1,0,0,0},
+	{0,0,0,0,0,0,0,1,0,0,0},
+	{0,0,0,0,0,0,0,1,1,1,0},
+	{0,0,0,0,0,0,0,0,0,1,0},
+	{0,0,0,0,0,0,0,0,0,1,1}
+	};
+void yolBulma(int x, int y){
+	int j,i;
+	yol[x][y]=219;
+	if(yol[x+1][y]==1)
+	  yolBulma(x+1,y);
+	if(yol[x][y+1]==1)
+	  yolBulma(x,y+1);
+	if(yol[x-1][y]==1)
+	  yolBulma(x-1,y);
+	if(yol[x][y-1]==1)
+	  yolBulma(x,y-1);	
+}
+
+
+
+int main(int argc, char *argv[]) {
+	int i,j;
+	printf("\t YOL HARITASI \n");
+	for(i=0;i<10;i++){
+		for(j=0;j<10;j++){
+			printf("%3d",yol[i][j]);
+			if(j==9) printf("\n");
+		}
+	}
+	printf("\n\n\n");	
+	yolBulma(0,0);
+	printf("\t YENI YOL HARITASI \n");
+	for(i=0;i<10;i++){
+		for(j=0;j<10;j++){
+			if(yol[i][j]==219) printf("%3c",yol[i][j]);
+			else printf("%3d",yol[i][j]);
+			if(j==9) printf("\n");
+		}
+	}
+	return 0;
+}
