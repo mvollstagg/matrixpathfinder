@@ -24,7 +24,7 @@ void yolBulma(int x, int y){
 	if(yol[x][y-1]==1)
 	  yolBulma(x,y-1);	
 }
-
+//branch testi
 
 
 int main(int argc, char *argv[]) {
